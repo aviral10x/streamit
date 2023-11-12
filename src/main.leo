@@ -54,10 +54,8 @@ program hello.aleo {
     if invoker == current_stream.receiver || invoker== current_stream.sender{
       let amount_streamed:u32 = check_balance(current_stream.block_height, block.height, current_stream.flow_rate);
       assert_neq(amount_streamed,0u32);
-      //NOTE: ideally if amount_streamed == amount to be streamed then please do the withdraw
       assert_neq(amount_streamed, current_stream.amount);
       assert_neq(amount_streamed,current_stream.amount +1u32);
-      // need to do the manual transfer rather than having a outside function
       let owner_hash: field = BHP256::hash_to_field(current_stream.sender);
       let receiver_hash:field = BHP256::hash_to_field(current_stream.receiver);
       let current_amount_sender:u32 = Mapping::get_or_use(balances,owner_hash ,0u32 );
@@ -70,7 +68,6 @@ program hello.aleo {
       Mapping::remove(id_to_stream,unique_hash );
     
     } else {
-      // TODO: do the error thing
       assert(false);
     }
     
@@ -96,8 +93,6 @@ finalize withdraw_from_stream (unique_hash:field ,caller:address) {
   assert_neq(amount_streamed,0u32);
   assert_neq(amount_streamed,current_stream.amount +1u32);
   assert_eq(amount_streamed, current_stream.amount );
-  // TODO: do the payout amount_streamed
-  // internal transition function
   let owner_hash: field = BHP256::hash_to_field(current_stream.sender);
   let receiver_hash:field = BHP256::hash_to_field(current_stream.receiver);
   let current_amount_sender:u32 = Mapping::get_or_use(balances,owner_hash ,0u32 );
