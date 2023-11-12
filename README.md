@@ -1,6 +1,9 @@
-# hello.aleo
+ZkStream facilitates continuous, real-time money streaming on Aleo.
 
-## Build Guide
+
+
+
+##Guide
 
 To compile this Aleo program, run:
 ```bash
