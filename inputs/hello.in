@@ -1,0 +1,12 @@
+// The program input for hello/src/main.leo
+[create_stream]
+receiver:address = aleo1q6qstg8q8shwqf5m6q5fcenuwsdqsvp4hhsgfnx5chzjm3secyzqt9mxm8 ;
+amount:u32 = 100u32;
+flow_rate:u32 = 1u32;
+
+
+[cancel_stream]
+unique_hash:field = 2743904898531323534115056075416413437898715480133536869997844479733266577733field;
+
+[withdraw_from_stream]
+unique_hash:field = 2743904898531323534115056075416413437898715480133536869997844479733266577733field;
